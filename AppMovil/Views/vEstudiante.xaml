@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="cGuambaS6.Views.vEstudiante"
+             Title="vEstudiante">
+    <VerticalStackLayout
+        Spacing="20"
+        Padding="20">
+        <Label 
+            Text="SEMANA 6: Consumo WS CGuamba"
+            FontSize="20"
+            HorizontalTextAlignment="Center"/>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Text="ID" Grid.Row="0" Grid.Column="0" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+            <Label Text="Nombre" Grid.Row="0" Grid.Column="1" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+            <Label Text="Apellido" Grid.Row="0" Grid.Column="2" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+            <Label Text="Edad" Grid.Row="0" Grid.Column="3" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+        </Grid>
+
+        <ListView x:Name="lvEstudiantes" ItemSelected="lvEstudiantes_ItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding id}" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center"/>
+                            <Label Text="{Binding nombre}" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center"/>
+                            <Label Text="{Binding apellido}" Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="Center"/>
+                            <Label Text="{Binding edad}" Grid.Row="0" Grid.Column="3" HorizontalTextAlignment="Center"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button x:Name="btnAgregar"
+                Text="Agregar estudiante"
+                Clicked="btnAgregar_Clicked"/>
+
+    </VerticalStackLayout>
+
+</ContentPage>

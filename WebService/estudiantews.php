@@ -61,24 +61,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'DELETE')
 
 if ($_SERVER['REQUEST_METHOD'] == 'PUT')
 {
-    $input = $_GET;
+    $input = json_decode(file_get_contents('php://input'), true);
     $postId = $input['id'];
     $fields = getParams($input);
 
-    $sql = "
-          UPDATE estudiantes
-          SET $fields
-          WHERE id='$postId'
-           ";
-
+    $sql = "UPDATE estudiantes SET $fields WHERE id=:id";
     $statement = $dbConn->prepare($sql);
+    $statement->bindValue(':id', $postId);
     bindAllValues($statement, $input);
-
     $statement->execute();
     header("HTTP/1.1 200 OK");
     exit();
 }
-?>
 
 
 ?>
